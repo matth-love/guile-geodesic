@@ -1,0 +1,48 @@
+
+ [ GUILE - G E O D E S I C ]
+
+-----------------------------
+
+GUILE-GEODESIC is a guile module for calculating the inverse and direct geodesic functions.
+
+-----------------------------
+
+GUILE-GEODESIC provides the followng module(s):
+
+- (geodesic geod)
+  (use-modules (geodesic geod))
+
+-- Module: geod
+   This module provides public functions for discovering the inverse and direct geodesic problems.
+   The functions provided in this module link to algorithms in the formulae module to provide simple
+   functions to access the various algorithms.
+
+-- Scheme Procedure: gds-distance lon1 lat1 lon2 lat2 #:ellps #:units #:formula
+   Return the distance between the points LON-1 LAT-1 and LON-2 LAT-2, 
+   using the specified input ellipsoid and output units.
+   The default ellipsoid is WGS84 and the default units are Meters (m)
+   The default formula used is the inverse Vincenty formula.
+   See `gds-ellps' and `gds-units' for key values.
+
+-- Scheme Procedure gds-inverse lon1 lat1 lon2 lat2 #:ellps #:units #:formula
+   Solve the inverse geodesic problem given two points x1 y1 x2 y2
+   The default ellipsoid is WGS84 and the default units are Meters (m)
+   Return a list: `(distance forward-azimuth return-azimuth)'
+   The default formula used is the inverse Vincenty formula.
+   See `gds-ellps' and `gds-units' for key values.
+
+-- Scheme Procedure: gds-direct lon1 lat1 lon2 lat2 #:ellps #:units #:formula
+   Solve the direct geodesic problem given an origin point x1 y1, a foward azimuth a1 and a distance s1.
+   The default ellipsoid is WGS84 and the default input units are Meters (m).
+   Return a list: `(lon-2 lat-2 return-azimuth)'
+   The default formula used is the inverse Vincenty formula.
+   See `gds-ellps' and `gds-units' for key values.
+
+-----------------------------
+
+- (gedoesic formulae)
+  (use-modules (geodesic formulae))
+
+-- Module: formulae
+   This module holds the various geodesic algorithms. Most of the time the geod module is all that is needed,
+   but if there is a need to used the lower-level functions, use this module.
